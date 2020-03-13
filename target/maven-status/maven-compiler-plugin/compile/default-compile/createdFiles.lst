@@ -1,0 +1,8 @@
+com\uniremington\model\Person.class
+com\uniremington\model\Specialist.class
+com\uniremington\process\Process.class
+com\uniremington\model\Student.class
+com\uniremington\model\Action.class
+com\uniremington\process\cicloWhile.class
+com\uniremington\util\JsonFile.class
+com\uniremington\util\IProjectConstats.class
