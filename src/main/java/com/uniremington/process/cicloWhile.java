@@ -34,8 +34,6 @@ public class cicloWhile {
 		requestFields = new String[]{"firstName","matter","classroom","teacher","hour"};
 		enterStudents(3, requestFields);
 		
-		
-		
 		LOG.info("############################################");
 		LOG.info("#	¡Process End!");
 		LOG.info("############################################\n");
