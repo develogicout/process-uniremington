@@ -106,7 +106,11 @@ public class cicloWhile {
 		}
 		return student;
 	}
-	
+	/**
+	 * 
+	 * @param quantity
+	 * @param requestFields
+	 */
 	public static void enterStudents(int quantity, String[] requestFields) {
 		int count1 = 0;
 		List<Student> studentList = new ArrayList<Student>();
