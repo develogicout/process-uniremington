@@ -5,14 +5,13 @@ package com.uniremington.process;
 
 import java.lang.reflect.Field;
 import java.text.ParseException;
-import java.util.List;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
 import com.uniremington.model.Action;
-import com.uniremington.model.Specialist;
 import com.uniremington.model.Person;
+import com.uniremington.model.Specialist;
 import com.uniremington.util.JsonFile;
 
 /**
@@ -24,6 +23,7 @@ public class Process implements Action {
 	static Scanner sc = new Scanner(System.in);
 	static final Logger LOG = Logger.getLogger(Process.class);
 	static int especialista = 0;
+	private static Person usuario = new Person();		
 
 	/**
 	 * @param args
@@ -31,10 +31,8 @@ public class Process implements Action {
 	 */
 	public static void main(String[] args) throws ParseException {
 		try {
-			Person usuario = new Person();		
-			
 			String[] usuarioCampos = {"firstName","surname","birthDay"};
-			pedirDatos(usuario, usuarioCampos);
+			pedirDatos(usuarioCampos);
 			LOG.info("############################################");
 			LOG.info(usuario.toString());
 			
@@ -84,13 +82,13 @@ public class Process implements Action {
 		} 
 	}
 
-	public static void pedirDatos(Person usuario, String[] data) {
+	public static Person pedirDatos(String[] data) {
 		sc = new Scanner(System.in);
 		try {
 			Field[] fields = usuario.getClass().getFields();
-			LOG.info("############################################");
-			LOG.info("###	Formato solicitud cita médica	####");
-			LOG.info("############################################");
+			LOG.info("#############################################");
+			LOG.info("###	Formato solicitud datos del usuario	####");
+			LOG.info("#############################################");
 			LOG.info("#	Ingrese los datos del usuario");
 			for (Field field : fields) {
 				if(required(data, field.getName())) {
@@ -103,6 +101,7 @@ public class Process implements Action {
 		} catch (Exception e) {
 			LOG.error(e.getMessage());
 		} 
+		return usuario;
 	}
 	
 	public static boolean required(String[] data, String value) {
@@ -124,5 +123,11 @@ public class Process implements Action {
 		}
 		return false;
 	}
+
+	public static void print() {
+		LOG.info(usuario.toString());
+	}
+	
+	
 
 }

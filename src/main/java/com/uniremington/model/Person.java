@@ -192,14 +192,13 @@ public class Person {
 
 	@Override
 	public String toString() {
-		String response = "#	Datos del usuario \n";
-		
+		String response = "\n############################################\n#	Datos del usuario \n";
 		if (firstName != null) response += "#	firstName:	" + firstName +"\n";
 		if (secondName != null) response += "#	secondName:	" + secondName +"\n";
 		if (surname != null) response += "#	surname:	" + surname +"\n";
 		if (secondSurname != null) response += "#	secondSurname:	" + secondSurname +"\n";
 		if (birthDay != null) response += "#	birthDay:	" + birthDay +"\n";
-		if (gender != null) response += "#	gender:	" + gender +"\n";
+		if (gender != null) response += "#	gender: 	" + gender +"\n";
 		response += "############################################";
 		return response;
 	}
