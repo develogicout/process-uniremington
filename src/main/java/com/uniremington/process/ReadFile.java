@@ -34,7 +34,7 @@ public class ReadFile implements IProjectConstats {
 			while ((linea = br.readLine()) != null)
 				LOG.info(linea);
 		} catch (Exception e) {
-			LOG.error(e.getMessage());
+			LOG.error(e.getMessage() + " Si el archivo no existe, creelo desde el menú principal y vuelve a intentarlo.");
 		} finally {
 			try {
 				if (null != fr) {

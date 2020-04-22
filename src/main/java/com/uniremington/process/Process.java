@@ -22,8 +22,8 @@ public class Process implements Action {
 
 	static Scanner sc = new Scanner(System.in);
 	static final Logger LOG = Logger.getLogger(Process.class);
-	static int especialista = 0;
-	private static Person usuario = new Person();		
+	static int specialist = 0;
+	private static Person user = new Person();		
 
 	/**
 	 * @param args
@@ -31,10 +31,10 @@ public class Process implements Action {
 	 */
 	public static void main(String[] args) throws ParseException {
 		try {
-			String[] usuarioCampos = {"firstName","surname","birthDay"};
-			pedirDatos(usuarioCampos);
+			String[] userFields = {"firstName","surname","birthDay"};
+			requestData(userFields);
 			LOG.info("############################################");
-			LOG.info(usuario.toString());
+			LOG.info(user.toString());
 			
 			Specialist[] list = JsonFile.loadFile();
 			
@@ -45,13 +45,13 @@ public class Process implements Action {
 					LOG.info("#	 " + (i + 1)  + ") " + list[i].getNombreYCargo());
 					
 				}
-			} while (!validarScInt(list.length));
+			} while (!validateScInt(list.length));
 			
 			
 			
 			LOG.info("############################################");
-			LOG.info(usuario.toString());
-			LOG.info(list[especialista-1].toString());
+			LOG.info(user.toString());
+			LOG.info(list[specialist-1].toString());
 			LOG.info("###	Proceso finalizado           	####");
 			LOG.info("############################################");
 			
@@ -64,16 +64,16 @@ public class Process implements Action {
 		}
 	}
 		
-	public static void pedirDatos(Specialist especialista, String[] data) {
+	public static void requestData(Specialist specialist, String[] data) {
 		sc = new Scanner(System.in);
 		try {
-			Field[] fields = especialista.getClass().getFields();
+			Field[] fields = specialist.getClass().getFields();
 			LOG.info("#	Ingrese los datos del especialista");
 			for (Field field : fields) {
 				if(required(data, field.getName())) {
 					LOG.info("#	" + field.getName() + ": ");
 					sc = new Scanner(System.in);
-					especialista.setData(field.getName(), sc.next());
+					specialist.setData(field.getName(), sc.next());
 				}
 			}
 			System.out.print ('\f');
@@ -82,10 +82,11 @@ public class Process implements Action {
 		} 
 	}
 
-	public static Person pedirDatos(String[] data) {
+	public static Person requestData(String[] data) {
 		sc = new Scanner(System.in);
+		user = new Person();
 		try {
-			Field[] fields = usuario.getClass().getFields();
+			Field[] fields = user.getClass().getFields();
 			LOG.info("#############################################");
 			LOG.info("###	Formato solicitud datos del usuario	####");
 			LOG.info("#############################################");
@@ -94,14 +95,14 @@ public class Process implements Action {
 				if(required(data, field.getName())) {
 					LOG.info("#	" + field.getName() + ": ");
 					sc = new Scanner(System.in);
-					usuario.setData(field.getName(), sc.next());
+					user.setData(field.getName(), sc.next());
 				}
 			}
 			System.out.print ('\f');
 		} catch (Exception e) {
 			LOG.error(e.getMessage());
 		} 
-		return usuario;
+		return user;
 	}
 	
 	public static boolean required(String[] data, String value) {
@@ -113,11 +114,11 @@ public class Process implements Action {
 		return false;
 	}	
 	
-	public static boolean validarScInt (int limit) {
+	public static boolean validateScInt (int limit) {
 		try {
 			sc = new Scanner(System.in);
-			especialista = sc.nextInt();
-			return (especialista <= limit) ? true : false;
+			specialist = sc.nextInt();
+			return (specialist <= limit) ? true : false;
 		} catch (Exception e) {
 			LOG.error("error: " + e.getMessage());
 		}
@@ -125,7 +126,7 @@ public class Process implements Action {
 	}
 
 	public static void print() {
-		LOG.info(usuario.toString());
+		LOG.info(user.toString());
 	}
 	
 	

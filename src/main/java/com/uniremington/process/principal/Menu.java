@@ -40,9 +40,12 @@ public class Menu implements IProjectConstats {
 		 * repite el proceso hasta que el usuario requiera salir
 		 */
 		do {
-			LOG.info("Bienvenido al parcial");
+			LOG.info("############################################");
+			LOG.info("#	Bienvenido al parcial");
+			LOG.info("#	Ingrese la opción del proceso que desea realizar");
 			Menu mn = new Menu();
 			mn.printOptions();
+			LOG.info("############################################");
 			mn.inputOptions();
 			mn.process();			
 		} while(option != MENU_OPTIONS.length-1);
@@ -57,7 +60,7 @@ public class Menu implements IProjectConstats {
 	 */
 	private void printOptions() {
 		for (int i = 0; i < MENU_OPTIONS.length; i++) {
-			LOG.info(i + ") " + MENU_OPTIONS[i]);
+			LOG.info("#	" + i + ") " + MENU_OPTIONS[i]);
 		}
 	}
 	
@@ -125,7 +128,6 @@ public class Menu implements IProjectConstats {
 	 * 
 	 */
 	
-	@SuppressWarnings("static-access")
 	private void process() {
 		if(option >= 0 && option < MENU_OPTIONS.length) {
 			LOG.info(MENU_OPTIONS[option]);			
@@ -135,7 +137,7 @@ public class Menu implements IProjectConstats {
 			printFields();
 			break;
 		case 1:
-			Process.pedirDatos(data);
+			Process.requestData(data);
 			Process.print();
 			break;
 		case 2:

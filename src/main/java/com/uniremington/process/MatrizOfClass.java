@@ -38,7 +38,7 @@ public class MatrizOfClass {
 		mat = new Person[filas][columnas];
 		for (int f = 0; f < mat.length; f++) {
 			for (int c = 0; c < mat[f].length; c++) {
-				mat[f][c] = Process.pedirDatos(data);
+				mat[f][c] = Process.requestData(data);
 			}
 		}
 	}
