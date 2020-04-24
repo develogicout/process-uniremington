@@ -14,6 +14,6 @@ public interface IProjectConstats {
 	public static final String	MSG_INVALID_OPTION										= "Opción inválida";
 	public static final String	MSG_PROCESSING											= "Procesando...";
 	
-	public static final String	PATH_FILE_TEST											= "D://temp/prueba.txt";
+	public static final String	PATH_FILE_TEST											= "./prueba.txt";
 	public static final String  MENU_OPTIONS[] 											= {"Capturar Array", "Capturar Datos", "Capturar Matriz", "Escribir archivo", "Leer archivo", "Salir"};
 }
